@@ -4,7 +4,7 @@
 
 ## Models
 
-the segmentation_models.models contains following models implementation.
+The `segmentation_models.models` contains following models implementation.
 
 | Model | Name | Reference |
 |:---------------|:----------------|:----------------|
@@ -28,7 +28,7 @@ the segmentation_models.models contains following models implementation.
 First clone the github repo in your local or server machine by following:
 ```
 git clone https://github.com/samiulengineer/segmentation_models.git
-cd segmentation_models
+cd root_dir/segmentation_models
 ```
 **Note:** Remember to change directory.
 
@@ -43,10 +43,24 @@ conda create --name <env> --file requirements.txt
 To train a model follow the instruction bellow.
 
 ```
+import json
 from utils.util import get_train_val_dataloader
 from utils.callbacks import SelectCallbacks
 from utils.loss import focal_loss
 from models.unet import unet
+
+def transform_data(**kargs):
+    pass
+
+def read_img(**kargs):
+    pass
+
+# Load config file
+with open('config.json') as json_file:
+    config = json.load(json_file)
+
+config["transform_data"] = transform_data
+config["img_read_fn"] = read_img
 
 # DataLoader
 train, val, config = get_train_val_dataloader(config)
@@ -64,6 +78,8 @@ loggers = SelectCallbacks(val, model, config)
 model.compile(optimizer = adam, loss = focal_loss())
 model.fit(train,verbose = 1,epochs = 1,validation_data = val,shuffle = False, callbacks = loggers.get_callbacks())
 ```
+
+**Note:** Remember to change `config.json` file as per your train configuration and rewrite `read_img` and `transform_data` for your dataset.
 
 ## Example
 
