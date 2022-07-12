@@ -8,7 +8,7 @@ Paper: https://arxiv.org/abs/1511.07122
 # ----------------------------------------------------------------------------------------------
 """
 
-def DilatedNet(config, use_ctx_module=False, bn=True):
+def dilatednet(config, use_ctx_module=False, bn=True):
     """
         Summary:
             Create DilatedNet model object

@@ -83,7 +83,7 @@ def bottleneck_decoder(tensor, nfilters, upsampling=False, normal=False, name=''
         
         
 
-def ENET(config):
+def enet(config):
     print('. . . . .Building ENet. . . . .')
     img_input = Input(shape=(config['height'], config['width'], config['in_channels']), name='image_input')
 

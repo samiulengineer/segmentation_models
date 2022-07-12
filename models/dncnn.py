@@ -8,7 +8,7 @@ DNCNN Model
 Paper: https://ieeexplore.ieee.org/abstract/document/7839189
 # ----------------------------------------------------------------------------------------------
 """
-def DnCNN(config):
+def dncnn(config):
     
     """
         Summary:

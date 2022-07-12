@@ -6,7 +6,7 @@ Paper: https://ieeexplore.ieee.org/document/8913594
 # ----------------------------------------------------------------------------------------------
 """
 
-def DeepWaterMap(config, min_width=4):
+def deepwatermap(config, min_width=4):
     inputs = tf.keras.layers.Input(shape=(config['height'], config['width'], config['in_channels']))
 
     def conv_block(x, num_filters, kernel_size, stride=1, use_relu=True):

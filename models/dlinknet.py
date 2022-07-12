@@ -64,7 +64,7 @@ def encoder_block(input_tensor, num_filters, num_res_blocks):
     return encoded, encoded_pool
 
 
-def DLINKNET(config):
+def dlinknet(config):
     inputs = Input(shape=(config['height'], config['width'], config['in_channels']))
     inputs_ = Conv2D(64, kernel_size=(3, 3), padding='same')(inputs)
     inputs_ = BatchNormalization()(inputs_)

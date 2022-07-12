@@ -40,7 +40,7 @@ decoder_input_maps = {
 }
 
 
-def LinkNet(img_height, img_width, nclasses=None):
+def linknet(config):
 
     def encoder_block(input_tensor, block=None):
         block_name = f'block_{block}'
@@ -84,7 +84,7 @@ def LinkNet(img_height, img_width, nclasses=None):
         x = Activation('relu', name=f'decoder_{block_name}_relu_3')(x)
         return x
 
-    input_layer = Input(shape=(img_height, img_width, 3), name='image_input')
+    input_layer = Input(shape=((config['height'], config['width'], config['in_channels'])), name='image_input')
     y = Conv2D(filters=64, kernel_size=(7, 7), strides=(2, 2), padding='same',
                kernel_initializer='he_normal', name='initial_conv2d')(input_layer)
     y = BatchNormalization(name='initial_block_bn')(y)
@@ -108,7 +108,7 @@ def LinkNet(img_height, img_width, nclasses=None):
         1, 1), padding='same', kernel_initializer='he_normal', name='final_conv2d')(y)
     y = BatchNormalization(name='final_block_bn_2')(y)
     y = Activation('relu', name='final_block_relu_2')(y)
-    y = Conv2DTranspose(filters=nclasses, kernel_size=(2, 2), strides=(
+    y = Conv2DTranspose(filters=config['num_classes'], kernel_size=(2, 2), strides=(
         2, 2), padding='same', kernel_initializer='he_normal', name='output_conv2dT')(y)
     output_layer = Activation('softmax', name='predictions')(y)
 
