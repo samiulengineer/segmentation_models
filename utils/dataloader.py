@@ -30,7 +30,7 @@ def read_other_file(directory):
     return np.array(data)
 
 
-def read_img(directory, patch_idx=None, img_suffix=None):
+def read_img(directory, label=False, patch_idx=None, img_suffix=None):
     """
     Summary:
         read image with rasterio and normalize the feature
@@ -131,14 +131,14 @@ class MyDataset(Sequence):
         tgts = []
         for i in range(len(batch_x)):
             if self.patchify:
-                imgs.append(self.read(batch_x[i], in_channels = self.in_channels, patch_idx=batch_patch[i]))
+                imgs.append(self.read(batch_x[i], patch_idx=batch_patch[i]))
                 # transform mask for model
                 if self.transform_fn:
                     tgts.append(self.transform_fn(self.read(batch_y[i], label=True,patch_idx=batch_patch[i]), self.num_class))
                 else:
                     tgts.append(self.read(batch_y[i], label=True,patch_idx=batch_patch[i]))
             else:
-                imgs.append(self.read(batch_x[i], in_channels = self.in_channels))
+                imgs.append(self.read(batch_x[i]))
                 # transform mask for model
                 if self.transform_fn:
                     tgts.append(self.transform_fn(self.read(batch_y[i], label=True), self.num_class))
@@ -195,7 +195,7 @@ class MyDataset(Sequence):
         imgs = []
         tgts = []
         if self.patchify:
-            imgs.append(self.read(self.img_dir[idx], in_channels=self.in_channels,patch_idx=self.patch_idx[idx]))
+            imgs.append(self.read(self.img_dir[idx],patch_idx=self.patch_idx[idx]))
             
             # transform mask for model
             if self.transform_fn:
@@ -203,7 +203,7 @@ class MyDataset(Sequence):
             else:
                 tgts.append(self.read(self.tgt_dir[idx], label=True,patch_idx=self.patch_idx[idx]))
         else:
-            imgs.append(self.read(self.img_dir[idx], in_channels=self.in_channels))
+            imgs.append(self.read(self.img_dir[idx]))
             
             # transform mask for model
             if self.transform_fn:

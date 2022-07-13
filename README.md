@@ -79,8 +79,16 @@ model.compile(optimizer = adam, loss = focal_loss())
 model.fit(train,verbose = 1,epochs = 1,validation_data = val,shuffle = False, callbacks = loggers.get_callbacks())
 ```
 
-**Note:** Remember to change `config.json` file as per your train configuration and rewrite `read_img` and `transform_data` for your dataset.
+```
+def read_img(directory, label=False, patch_idx=None):
+    pass
+
+def transform_data(directory, num_classes):
+    pass
+```
+
+**Note:** Remember to change `config.json` file as per your train configuration and rewrite `read_img` and `transform_data` for your dataset. The `read_img` and `transform_data` must have the argument like above.
 
 ## Example
 
-Jupyter Notebokk provided as example.
+Jupyter Notebook provided as example.
