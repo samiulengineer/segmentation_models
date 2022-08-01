@@ -16,7 +16,7 @@ The `segmentation_models.models` contains following models implementation.
 | `fapnet`     | FAP-NET         | [In proceeding](#) |
 | `attentionunet`  | Attention U-net | [Oktay et al. (2018)](https://arxiv.org/abs/1804.03999) |
 | `linknet`     | LINK-Net         | [Chaurasia et al. (2017)](https://arxiv.org/pdf/1707.03718.pdf) |
-| `dlinknet`     | DLINK-Net         | [Zhou et al. (2018)](hhttps://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w4/Zhou_D-LinkNet_LinkNet_With_CVPR_2018_paper.pdf) |
+| `dlinknet`     | DLINK-Net         | [Zhou et al. (2018)](https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w4/Zhou_D-LinkNet_LinkNet_With_CVPR_2018_paper.pdf) |
 | `deeplabv3`     | DeepLabV3         | [Chen et al. (2017)](https://arxiv.org/abs/1706.05587v3) |
 | `deepwatermap`     | DeepWaterMAP         | [Isikdogan et al. (2020)](https://ieeexplore.ieee.org/document/8913594) |
 | `dilatednet`     | DialatedNET         | [Yu et al. (2016)](https://arxiv.org/abs/1511.07122) |
